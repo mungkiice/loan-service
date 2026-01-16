@@ -1,0 +1,51 @@
+server:
+  port: "8080"
+  host: "0.0.0.0"
+  read_timeout: 15s
+  write_timeout: 15s
+  idle_timeout: 60s
+
+database:
+  host: "localhost"
+  port: 5432
+  user: "postgresq"
+  password: "password"
+  dbname: "database"
+  sslmode: "disable"
+  max_open_conns: 25
+  max_idle_conns: 5
+  conn_max_lifetime: 5m
+  conn_max_idle_time: 10m
+
+redis:
+  addr: "localhost:6379"
+  password: ""
+  db: 0
+  dial_timeout: 5s
+  read_timeout: 3s
+  write_timeout: 3s
+  pool_size: 10
+  min_idle_conns: 5
+
+storage:
+  type: "local"  # "local" or "s3"
+  base_path: "./storage"
+  base_url: "http://localhost:8080/files"
+
+email:
+  provider: "mock"  # "mock", "smtp", "sendgrid"
+  smtp:
+    host: "smtp.gmail.com"
+    port: 587
+    username: ""
+    password: ""
+    from: "noreply@example.com"
+
+app:
+  environment: "development"  # "development", "staging", "production"
+  log_level: "info"  # "debug", "info", "warn", "error"
+  idempotency_ttl: 24h
+  cache_ttl: 5m
+  lock_ttl: 30s
+  jwt_secret: "your_secret_is_saved_here"  
+  jwt_expiration: 24h
